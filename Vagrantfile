@@ -42,12 +42,12 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SCRIPT
     echo "Building docker image..."
     cd /vagrant
-    docker build -t nanobox/mysql:5.5 --no-cache=true 5.5
-    docker tag nanobox/mysql:5.5 nanobox/mysql:5.5
-    docker build -t nanobox/mysql:5.6 --no-cache=true 5.6
-    docker tag nanobox/mysql:5.6 nanobox/mysql:5.6
-    docker build -t nanobox/mysql:5.7 --no-cache=true 5.7
-    docker tag nanobox/mysql:5.7 nanobox/mysql:5.7
+    docker build -t mubox/mysql:5.5 --no-cache=true 5.5
+    docker tag mubox/mysql:5.5 mubox/mysql:5.5
+    docker build -t mubox/mysql:5.6 --no-cache=true 5.6
+    docker tag mubox/mysql:5.6 mubox/mysql:5.6
+    docker build -t mubox/mysql:5.7 --no-cache=true 5.7
+    docker tag mubox/mysql:5.7 mubox/mysql:5.7
   SCRIPT
 
 end

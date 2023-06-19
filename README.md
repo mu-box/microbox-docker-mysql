@@ -1,40 +1,40 @@
-# MySQL [![Build Status Image](https://travis-ci.org/nanobox-io/nanobox-docker-mysql.svg)](https://travis-ci.org/nanobox-io/nanobox-docker-mysql)
+# MySQL [![Build Status Image](https://github.com/mu-box/microbox-docker-mysql/actions/workflows/ci.yaml/badge.svg)](https://github.com/mu-box/microbox-docker-mysql/actions)
 
-This is an MySQL Docker image used to launch a MySQL service on Nanobox. To use this image, add a data component to your `boxfile.yml` with the `nanobox/mysql` image specified:
+This is an MySQL Docker image used to launch a MySQL service on Microbox. To use this image, add a data component to your `boxfile.yml` with the `mubox/mysql` image specified:
 
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
 ```
 
 ## MySQL Configuration Options
 MySQL components are configured in your `boxfile.yml`. All available configuration options are outlined below.
 
 ###### Quick Links
-[plugins](#plugins)  
-[event\_scheduler](#event-scheduler)  
-[max\_connections](#max-connections)  
-[thread\_stack](#thread-stack)  
-[myisam\_recover](#myisam-recover)  
-[max\_allowed\_packet](#max-allowed-packet)  
-[max\_join\_size](#max-join-size)  
-[table\_open\_cache](#table-open-cache)  
-[query\_cache\_limit](#query-cache-limit)  
-[allow\_suspicious\_udfs](#allow-suspicious-udfs)  
-[ansi](#ansi)  
-[audit\_log](#audit-log)  
-[ft\_max\_word\_len](#fulltext-maximum-word-length)  
-[ft\_min\_word\_len](#fulltext-minimum-word-length)  
-[ft\_query\_expansion\_limit](#fulltext-query-expansion-limit)  
-[ft\_stopword\_file](#fulltext-stopword-file)  
+[plugins](#plugins)
+[event\_scheduler](#event-scheduler)
+[max\_connections](#max-connections)
+[thread\_stack](#thread-stack)
+[myisam\_recover](#myisam-recover)
+[max\_allowed\_packet](#max-allowed-packet)
+[max\_join\_size](#max-join-size)
+[table\_open\_cache](#table-open-cache)
+[query\_cache\_limit](#query-cache-limit)
+[allow\_suspicious\_udfs](#allow-suspicious-udfs)
+[ansi](#ansi)
+[audit\_log](#audit-log)
+[ft\_max\_word\_len](#fulltext-maximum-word-length)
+[ft\_min\_word\_len](#fulltext-minimum-word-length)
+[ft\_query\_expansion\_limit](#fulltext-query-expansion-limit)
+[ft\_stopword\_file](#fulltext-stopword-file)
 [Custom Users/Permissions/Databases](#custom-userspermissionsdatabases)
 
 #### Overview of MySQL Boxfile Settings
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
-    version: 5.5
+    version: 5.7
     plugins:
       - federated
       - audit_log
@@ -60,11 +60,11 @@ data.db:
             - privilege: ALL PRIVILEGES
               'on': "*.*"
               with_grant: true
-      - username: nanobox
+      - username: microbox
         meta:
           privileges:
             - privilege: ALL PRIVILEGES
-              'on': gonano.*
+              'on': gomicro.*
               with_grant: true
             - privilege: ALL PRIVILEGES
               'on': testing.*
@@ -79,9 +79,9 @@ data.db:
               'on': "*.*"
               with_grant: false
           databases:
-          - gonano
+          - gomicro
           - testing
-```  
+```
 
 ### Version
 When configuring MySQL in your Boxfile, you can define which of the following versions you'd like to use.
@@ -96,9 +96,9 @@ When configuring MySQL in your Boxfile, you can define which of the following ve
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
-    version: 5.6
+    version: 5.7
 ```
 
 ### Plugins
@@ -112,7 +112,7 @@ This allows you to specify what MySQL plugins to load into your database service
 #### plugins
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     plugins:
       - federated
@@ -129,7 +129,7 @@ This enables or disables [MySQL's event scheduler](http://dev.mysql.com/doc/refm
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     event_scheduler: 'Off'
 ```
@@ -141,7 +141,7 @@ View [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/server
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     max_connections: 1024
 ```
@@ -153,7 +153,7 @@ View [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/server
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     thread_stack: '256K'
 ```
@@ -165,7 +165,7 @@ View [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/server
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     myisam_recover: 'DEFAULT'
 ```
@@ -177,7 +177,7 @@ View [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/server
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     max_allowed_packet:  '16M'
 ```
@@ -189,7 +189,7 @@ View [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/server
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     max_join_size: 9223372036854775807
 ```
@@ -201,7 +201,7 @@ View [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.1/en/server
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     table_open_cache: 64
 ```
@@ -213,7 +213,7 @@ View [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/server
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     query_cache_limit: '1M'
 ```
@@ -225,7 +225,7 @@ View the [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.6/en/se
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     allow_suspicious_udfs: 'Off'
 ```
@@ -237,7 +237,7 @@ View the [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.6/en/se
 ```yaml
 # default setting
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     ansi: 'Off'
 ```
@@ -255,7 +255,7 @@ View the [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/au
 #### audit\_log
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     audit_log: 'On'
     plugins:
@@ -268,7 +268,7 @@ View the [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/se
 ### ft\_max\_word\_len
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     ft_max_word_len: 84
 ```
@@ -279,7 +279,7 @@ View the [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/se
 #### ft\_min\_word\_len
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     ft_min_word_len: 4
 ```
@@ -290,7 +290,7 @@ View the [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/se
 #### ft\_query\_expansion\_limit
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     ft_query_expansion_limit: 20
 ```
@@ -301,7 +301,7 @@ View the [dev.mysql.com documentation](http://dev.mysql.com/doc/refman/5.5/en/se
 #### ft\_stopword\_file
 ```yaml
 data.db:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     ft_stopword_file: ' '
 ```
@@ -311,7 +311,7 @@ You can create custom users with custom permissions as well as additional databa
 
 ```yaml
 data.mysql:
-  image: nanobox/mysql
+  image: mubox/mysql
   config:
     users:
       - username: root
@@ -320,11 +320,11 @@ data.mysql:
             - privilege: ALL PRIVILEGES
               'on': "*.*"
               with_grant: true
-      - username: nanobox
+      - username: microbox
         meta:
           privileges:
             - privilege: ALL PRIVILEGES
-              'on': gonano.*
+              'on': gomicro.*
               with_grant: true
             - privilege: ALL PRIVILEGES
               'on': testing.*
@@ -339,11 +339,11 @@ data.mysql:
               'on': "*.*"
               with_grant: false
           databases:
-          - gonano
+          - gomicro
           - testing
 ```
 
-For each custom user specified, Nanobox will generate an environment variable for the user's password using the following pattern:
+For each custom user specified, Microbox will generate an environment variable for the user's password using the following pattern:
 
 ```yaml
 # Pattern
@@ -371,7 +371,7 @@ DATA_DB_DBUSER_PASS
 ```
 
 ## Help & Support
-This is a MySQL Docker image provided by [Nanobox](http://nanobox.io). If you need help with this image, you can reach out to us in the [#nanobox IRC channel](http://webchat.freenode.net/?channels=nanobox). If you are running into an issue with the image, feel free to [create a new issue on this project](https://github.com/nanobox-io/nanobox-docker-mysql/issues/new).
+This is a MySQL Docker image provided by [Microbox](http://microbox.cloud). If you need help with this image, you can reach out to us in the [Microbox Discord](https://discord.gg/MCDdHfy). If you are running into an issue with the image, feel free to [create a new issue on this project](https://github.com/mu-box/microbox-docker-mysql/issues/new).
 
 ## License
-Mozilla Public License, version 2.0
+This project is released under [The MIT License](http://opensource.org/licenses/MIT).
